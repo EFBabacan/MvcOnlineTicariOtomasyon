@@ -1,0 +1,14 @@
+# Visual Studio Geliştirme Ortamı Dosyaları
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build çıktıları
+[Bb]in/
+[Oo]bj/
+
+# Diğer
+*.log
+*.temp
