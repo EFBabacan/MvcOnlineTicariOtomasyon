@@ -10,8 +10,8 @@
     <tr>
         <th>Kategori ID</th>
         <th>Kategori Adi</th>
-        <th>Güncelle</th>
         <th>Sil</th>
+        <th>Güncelle</th>
     </tr>
     @foreach (var k in Model)
     {
@@ -23,7 +23,7 @@
                 @k.KategoriAd
             </td>
             <td><a href="/Kategori/KategoriSil/@k.KategoriId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Kategori/KategoriGetir/@k.KategoriId" class="btn btn-success css">Güncelle</a></td>
+            <td><a href="/Kategori/KategoriGetir/@k.KategoriId" class="btn btn-warning css">Güncelle</a></td>
         </tr>
     }
 </table>

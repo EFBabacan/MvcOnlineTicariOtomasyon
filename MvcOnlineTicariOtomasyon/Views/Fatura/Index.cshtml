@@ -1,0 +1,42 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Faturalar</h2>
+<br />
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>ID</th>
+        <th>Seri No</th>
+        <th>Sıra No</th>
+        <th>Verdi Dairesi</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>ToplamTutar</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.FaturaId</td>
+            <td>@k.FaturaSeriNo</td>
+            <td>@k.FaturaSıraNo</td>
+            <td>@k.VergiDairesi</td>
+            <td>@k.Tarih</td>
+            <td>@k.Saat</td>
+            <td>@k.TeslimEden</td>
+            <td>@k.TeslimAlan</td>
+            <td>@k.ToplamTutar</td>
+            <td><a href="/Fatura/FaturaGetir/@k.FaturaId" class="btn btn-warning css">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@k.FaturaId" class="btn btn-success css" style="background-color:cornflowerblue" color="white">Detay</a></td>
+        </tr>
+    }
+</table>
+<a href="/Fatura/FaturaEkle" class="btn btn-info">Fatura Ekle</a>
+

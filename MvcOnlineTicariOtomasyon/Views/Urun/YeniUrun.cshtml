@@ -1,0 +1,71 @@
+﻿@* =================================================================== *@
+@* @ SEMBOLÜ İLE BAŞLAYAN AÇIKLAMALAR (RAZOR YORUM SATIRI)             *@
+@* Bu yorumlar sunucuda işlenir ve kullanıcının tarayıcısına GİTMEZ.   *@
+@* =================================================================== *@
+
+@* @model direktifi: Bu View'ın hangi model sınıfıyla sıkı sıkıya bağlı (strongly-typed)
+    çalışacağını belirtir. Bu sayfa, 'Urun' sınıfına ait bir nesne bekliyor.
+    Bu sayede modelin özelliklerine (x.UrunAd gibi) güvenli bir şekilde erişebiliriz. *@
+@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+
+@* @{ ... } Razor Kod Bloğu: İçine birden fazla satır C# kodu yazmamızı sağlar.
+    Bu blok içindeki kodlar HTML üretmez, sadece sunucuda çalıştırılır. *@
+@{
+    // ViewBag, Controller'dan View'a küçük veriler taşımak için kullanılan bir yapıdır.
+    // Burada sayfanın başlığını "YeniUrun" olarak ayarlıyoruz.
+    ViewBag.Title = "YeniUrun";
+
+    // Bu View'ın hangi ana şablonu (layout) kullanacağını belirtiyoruz.
+    // Böylece sayfanın menüsü, alt bilgisi gibi ortak alanları tekrar yazmamız gerekmez.
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Urun Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+
+    @Html.HiddenFor(x => x.UrunId)
+    @* @Html.LabelFor(): Bu bir HTML Helper'dır. Modelin 'UrunAd' özelliği için bir
+        <label> etiketi oluşturur. Metin olarak da modeldeki [Display] attribute'unu
+        veya özellik adını ("UrunAd") kullanır. *@
+    @Html.LabelFor(x => x.UrunAd)
+
+    @* @Html.TextBoxFor(): Bu da bir HTML Helper'dır. Modelin 'UrunAd' özelliği için
+        bir <input type="text"> etiketi oluşturur. 'x => x.UrunAd' ifadesi sayesinde
+        bu input alanı, Urun modelinin UrunAd özelliğine bağlanmış olur.
+        new { @class = "form-control" } ifadesi, oluşturulan input etiketine
+        CSS sınıfı ekler (Bu da Bootstrap için bir stil). *@
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Marka)
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Stok)
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.AlisFiyat)
+    @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.SatisFiyat)
+    @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Kategori.KategoriId)
+
+
+    @Html.DropDownListFor(x => x.KategoriId, (List<SelectListItem>)ViewBag.dgr1,
+        new { @class = "form-control" })
+
+    @*@Html.TextBoxFor(x =>x.KategoriId, new { @class = "form-control" })*@
+    <br />
+    @Html.LabelFor(x => x.UrunGorsel)
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Durum)
+    @Html.TextBoxFor(x => x.Durum, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>
+
+

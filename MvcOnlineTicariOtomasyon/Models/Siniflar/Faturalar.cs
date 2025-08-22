@@ -22,7 +22,9 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 
 
         public DateTime Tarih { get; set; }
-        public DateTime Saat { get; set; }
+        [Column(TypeName = "Char")]
+        [StringLength(5)]
+        public string Saat { get; set; }
 
         [Column(TypeName = "Varchar")]
         [StringLength(60)]
@@ -35,8 +37,12 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string TeslimAlan { get; set; }
+
+        public decimal ToplamTutar { get; set; }
+
         //Fatura Kalem ile olan iliski 
         //ICollection: içindeki eleman sayısı bilinen ve eleman ekleme, çıkarma, temizleme gibi temel işlemlere izin veren bir koleksiyon"
         public ICollection<FaturaKalem> FaturaKalems { get; set; }
+
     }
 }

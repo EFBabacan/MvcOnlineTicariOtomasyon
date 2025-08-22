@@ -11,7 +11,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         // tablo tabanlı çalışıp veri tabanına aktaracağımız için DbSet kullandık
         public DbSet<Admin> Admins {  get; set; }
         public DbSet<Cariler> Carilers { get; set; }
-        public DbSet<Departman> Departmans { get; set; }
+        public DbSet<Departman> Departman { get; set; }
         public DbSet<FaturaKalem> FaturaKalems { get; set; }
         public DbSet<Faturalar> Faturalars { get; set; }
         public DbSet<Gider> Giders { get; set; }

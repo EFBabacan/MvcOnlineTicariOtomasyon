@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
+
 namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 {
     public class Urun
@@ -29,7 +30,14 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [StringLength(250)]
         public string UrunGorsel { get; set; }
         //Kategoriler ile olan iliskisi
-        public Kategori Kategori { get; set; }
+        // Bu 'virtual' kelimesi Lazy Loading'i aktif eder.
+        // Lazy Loading kullanışlı olsa da, özellikle listeleme sayfalarında
+        // performans sorunlarına yol açabilir (N+1 problemi).
+        // Çünkü her bir satır için ayrı bir veritabanı sorgusu gönderir.
+
+        public int KategoriId { get; set; }
+        public virtual Kategori Kategori { get; set; }
+        
         public ICollection<SatisHareket> SatisHarekets { get; set; }
 
     }
